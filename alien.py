@@ -25,30 +25,3 @@ class Alien(Sprite):
 
         # Store a decimal value for the ship's horizontal position
         self.x = float(self.rect.x)
-
-        # Movement Flag
-        self.moving_right = True
-        self.moving_left = True
-        self.moving_up = False
-        self.moving_down = True
-
-    def update(self):
-        """Update the ship's position based on the movement flag"""
-        # Update the ship's x value, not  the rect.
-        # Take this as plotting a 2 dimensional graph to all four sides and the movement of ship can be figured out.
-        """This was my personal win!"""
-        if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.x += self.settings.ship_speed
-        if self.moving_left and self.rect.left > 0:
-            self.x -= self.settings.ship_speed
-        if self.moving_up and self.rect.top > self.screen_rect.top:
-            self.y -= self.settings.ship_speed
-        if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
-            self.y += self.settings.ship_speed
-        # Update rect object from self.x.
-        self.rect.x = self.x
-        self.rect.y = self.y
-
-    def blitme(self):
-        """Draw the ship at its current location"""
-        self.screen.blit(self.image, self.rect)
